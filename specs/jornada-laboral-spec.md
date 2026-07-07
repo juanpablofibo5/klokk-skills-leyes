@@ -1,10 +1,10 @@
 # Spec: skill `jornada-laboral`
 
-> 🔍 **BORRADOR — PENDIENTE DE VISTO BUENO DE JP.** Producida en fase 1 del
-> pipeline (ver BACKLOG.md) el 2026-07-07. Las citas fueron transcritas por
-> Claude directamente de los documentos oficiales descargados esa fecha
-> (detalle en "Estado del research", al final). No construir la skill hasta
-> aprobar esta spec contra los PDFs oficiales.
+> ✅ **APROBADA POR JP — 2026-07-07.** Producida en fase 1 del pipeline (ver
+> BACKLOG.md) el 2026-07-07; citas transcritas por Claude directamente de los
+> documentos oficiales descargados esa fecha (detalle en "Estado del
+> research", al final). La skill se construyó en fase 2 a partir de esta spec:
+> `skills/jornada-laboral/`.
 
 ## 1. Resumen ejecutivo
 

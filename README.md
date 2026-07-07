@@ -117,6 +117,7 @@ borrador ──→ en-verificacion ──→ verificada
 | Skill | Qué cubre | Estado | Última revisión |
 |-------|-----------|--------|-----------------|
 | [registro-jornada](skills/registro-jornada/SKILL.md) | Auditoría del registro electrónico de jornada — Art. 132 Fr. XXXIV LFT (DOF 2026-05-01) | en-verificacion | 2026-07-07 |
+| [jornada-laboral](skills/jornada-laboral/SKILL.md) | Tipos de jornada y límites diario/semanal por año — Arts. 58–68 LFT + calendario 48→40 (2026–2030) | en-verificacion | 2026-07-07 |
 
 <!-- Al agregar o revisar una skill, actualiza su fila. Este índice es el
      tablero de auditoría del repo. -->
