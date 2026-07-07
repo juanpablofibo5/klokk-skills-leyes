@@ -26,16 +26,16 @@ negocio.
 | Skill | Pregunta operativa | Fuentes a investigar* | Fase |
 |-------|--------------------|-----------------------|------|
 | `registro-jornada` | ¿El sistema cumple el registro electrónico del Art. 132 Fr. XXXIV? | Decreto DOF 2026-05-01 (ya citado en el repo) | ✅ 2 completada — espera fase 3 |
-| `jornada-laboral` | ¿Cuánto puede durar la jornada por tipo de turno y por año (calendario 48→40, 2026–2030)? | LFT, capítulo de jornada de trabajo + transitorios del decreto 2026 | pendiente |
-| `horas-extra` | ¿Cuándo una hora es extra, cuántas caben por semana (9→12 desde 2028) y cómo se pagan? | LFT, jornada y salario + transitorios del decreto 2026 | pendiente |
-| `dias-de-descanso` | ¿Qué descanso semanal corresponde, qué prima aplica y qué pasa si se trabaja? | LFT, capítulo de días de descanso | pendiente |
-| `dias-festivos` | ¿Qué días son descanso obligatorio y cómo se paga trabajarlos? | LFT, descansos obligatorios | pendiente |
+| `jornada-laboral` | ¿Cuánto puede durar la jornada por tipo de turno y por año (calendario 48→40, 2026–2030)? | LFT consolidada pp. 21–22 (Arts. 58–68) + decreto DOF 2026-05-01 | 🔍 1 — spec en visto bueno (`specs/jornada-laboral-spec.md`) |
+| `horas-extra` | ¿Cuándo una hora es extra, cuántas caben por semana (9/9/10/11/12 en 2026–2030) y cómo se pagan? | LFT consolidada p. 22 (Arts. 65–68) + Transitorio Cuarto del decreto 2026 | pendiente |
+| `dias-de-descanso` | ¿Qué descanso semanal corresponde, qué prima aplica y qué pasa si se trabaja? | LFT consolidada p. 23 (Arts. 69–73, localizados 2026-07-07) | pendiente |
+| `dias-festivos` | ¿Qué días son descanso obligatorio y cómo se paga trabajarlos? | LFT consolidada pp. 23–24 (Arts. 74–75, localizados 2026-07-07) | pendiente |
 
 ## P2 — Lo que el registro debe poder probar o cubrir
 
 | Skill | Pregunta operativa | Fuentes a investigar* | Fase |
 |-------|--------------------|-----------------------|------|
-| `vacaciones` | ¿Cuántos días tocan por antigüedad y cómo se registran como ausencia justificada? | LFT, capítulo de vacaciones (reforma "vacaciones dignas") | pendiente |
+| `vacaciones` | ¿Cuántos días tocan por antigüedad y cómo se registran como ausencia justificada? | LFT consolidada p. 24 (Arts. 76–81, localizados 2026-07-07; reforma "vacaciones dignas" DOF 27-12-2022) | pendiente |
 | `teletrabajo` | ¿Qué obliga el teletrabajo en registro de jornada y desconexión? | LFT, capítulo de teletrabajo + NOM-037-STPS | pendiente |
 | `conservacion-y-prueba` | ¿Qué documentos conservar, cuánto tiempo, y qué pasa en juicio si faltan? | LFT Arts. 784 y 804 (ya citados en el repo) + plazos de conservación | pendiente |
 | `asistencia-y-faltas` | ¿Qué efectos legales tienen faltas y retardos, y qué debe quedar registrado? | LFT, causales y obligaciones relacionadas con asistencia | pendiente |
