@@ -45,6 +45,14 @@ Orden: más reciente arriba. Cada entrada: qué se hizo, qué quedó pendiente.
   Art. 76, bloques quinquenales como lectura estándar con CL-01 (cortes de
   bloque) para el abogado. CL-04: tensión potestad del trabajador (78) vs
   ventana de 6 meses (81).
+- Fuentes localizadas para las 3 restantes (sondeos por página en D1):
+  Art. 47 + aviso de rescisión (pp. 15–16), Arts. 134-V/135-II (p. 39),
+  teletrabajo 330-A–330-K (pp. 95–97), Art. 784 (p. 335), Arts. 804–805
+  (p. 340). Hallazgo: 784-VIII sigue diciendo "nueve horas semanales" —
+  NO fue actualizado por el decreto 2026 → CL para el abogado.
+- Loops de `teletrabajo` CERRADOS (batch, v1 solo LFT por D-12): spec +
+  skill construida, casos 6/6 ✓. RD-07 = PENDIENTE (NOM-037); CL-01
+  (ventana del 40 %), CL-02 (alcance de la desconexión).
 
 ## 2026-07-07 · S3 — Sistema de producción + jornada-laboral completa
 

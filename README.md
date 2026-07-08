@@ -122,6 +122,7 @@ borrador ──→ en-verificacion ──→ verificada
 | [dias-de-descanso](skills/dias-de-descanso/SKILL.md) | Descanso semanal, prima dominical y pago doble del descanso trabajado — Arts. 69–73 LFT | en-verificacion | 2026-07-07 |
 | [dias-festivos](skills/dias-festivos/SKILL.md) † | Calendario de descansos obligatorios (fijos, lunes móviles, sexenal, electoral) y pago doble del festivo laborado — Arts. 74–75 LFT | en-verificacion | 2026-07-07 |
 | [vacaciones](skills/vacaciones/SKILL.md) † | Tabla "vacaciones dignas" por antigüedad, 12 días continuos, ventana de 6 meses y prima ≥25 % — Arts. 76–81 LFT | en-verificacion | 2026-07-07 |
+| [teletrabajo](skills/teletrabajo/SKILL.md) † | Umbral del 40 %, jornada remota con los mismos máximos, desconexión y supervisión proporcional — Arts. 330-A–330-K LFT (NOM-037 pendiente, D-12) | en-verificacion | 2026-07-07 |
 
 † Construida en modo batch (D-11 en DECISIONES.md): la revisión de su spec
 por JP está pendiente en bloque; la fase 3 (abogado) aplica igual que a todas.

@@ -36,7 +36,7 @@ negocio.
 | Skill | Pregunta operativa | Fuentes a investigar* | Fase |
 |-------|--------------------|-----------------------|------|
 | `vacaciones` | ¿Cuántos días tocan por antigüedad y cómo se registran como ausencia justificada? | LFT consolidada p. 24 (Arts. 76–81, localizados 2026-07-07; reforma "vacaciones dignas" DOF 27-12-2022) | ✅ 2 completada (batch D-11) — espera revisión JP + fase 3 |
-| `teletrabajo` | ¿Qué obliga el teletrabajo en registro de jornada y desconexión? | LFT, capítulo de teletrabajo + NOM-037-STPS | pendiente |
+| `teletrabajo` | ¿Qué obliga el teletrabajo en registro de jornada y desconexión? | LFT pp. 95–97 (Arts. 330-A–330-K, localizados 2026-07-07) ✓; NOM-037-STPS PENDIENTE (D-12) | ✅ 2 completada v1-LFT (batch D-11) — NOM-037 en loop dedicado |
 | `conservacion-y-prueba` | ¿Qué documentos conservar, cuánto tiempo, y qué pasa en juicio si faltan? | LFT Arts. 784 y 804 (ya citados en el repo) + plazos de conservación | pendiente |
 | `asistencia-y-faltas` | ¿Qué efectos legales tienen faltas y retardos, y qué debe quedar registrado? | LFT, causales y obligaciones relacionadas con asistencia | pendiente |
 
