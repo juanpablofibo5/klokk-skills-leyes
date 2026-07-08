@@ -1,0 +1,14 @@
+name: validacion
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar la librería contra las reglas del kernel
+        run: python3 tools/validar.py
