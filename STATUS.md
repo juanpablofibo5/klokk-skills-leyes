@@ -4,8 +4,10 @@
 
 ## Ahora mismo
 
-- **Loop en curso:** fase 1 de `horas-extra` (investigación → spec).
-- **Próximo gate:** visto bueno de JP a `specs/horas-extra-spec.md`.
+- **Último loop cerrado:** fase 1 de `horas-extra` — spec producida y
+  checklist del brief verificado (2026-07-07).
+- **Gate abierto:** visto bueno de JP a `specs/horas-extra-spec.md` para
+  pasar a fase 2.
 
 ## Estado por skill
 
@@ -13,7 +15,7 @@
 |-------|------|----------------|
 | `registro-jornada` | ✅ 2 completada | Fase 3 (abogado, librería completa) |
 | `jornada-laboral` | ✅ 2 completada | Fase 3 (abogado, librería completa) |
-| `horas-extra` | 🔄 1 en curso | Visto bueno de JP a la spec |
+| `horas-extra` | 🔍 1 cerrada — spec en visto bueno | Visto bueno de JP a la spec |
 | Resto del catálogo | pendiente | Ver [BACKLOG.md](BACKLOG.md) |
 
 ## Fuentes oficiales ya localizadas (descargadas 2026-07-07)

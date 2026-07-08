@@ -7,8 +7,12 @@ Orden: más reciente arriba. Cada entrada: qué se hizo, qué quedó pendiente.
 - Se adopta el sistema del agent-playbook: CLAUDE.md (kernel de reglas),
   STATUS.md, DECISIONES.md (D-01 a D-10 capturadas retroactivamente) y esta
   bitácora. Protocolo de loops por fase con checklist y gate (D-10).
-- Loop fase 1 de `horas-extra`: en curso al crear esta entrada; el cierre se
-  registra abajo en esta misma sesión.
+- Loop fase 1 de `horas-extra` CERRADO: spec producida
+  (`specs/horas-extra-spec.md`) con F-01–F-06 (Arts. 65–68 de D1 p. 22 +
+  Transitorios Primero y Cuarto de D2 pp. 3–4), RD-01–RD-08, CL-01–CL-04
+  (dos nuevos de dinero: base del tope +4h en transición, distribución
+  4h×4 días vs topes graduales), 6 casos de prueba y checklist del brief
+  verificado (9/9). Gate abierto: visto bueno de JP.
 
 ## 2026-07-07 · S3 — Sistema de producción + jornada-laboral completa
 
