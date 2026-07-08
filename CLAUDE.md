@@ -29,6 +29,7 @@ Cada fase del pipeline se trabaja como un loop auditable:
 ```
 EJECUTAR la fase
   → VERIFICAR contra el checklist de la fase (abajo)
+  → VALIDAR: python3 tools/validar.py en verde (el CI lo repite en cada push)
   → DOCUMENTAR: STATUS.md + BITACORA.md (+ DECISIONES.md si hubo decisión)
   → COMMIT + PUSH
   → GATE: no se avanza de fase sin cumplir el gate
@@ -45,6 +46,7 @@ EJECUTAR la fase
 - [ ] Estructura EXACTA de la sección 8 de la spec aprobada
 - [ ] Solo contenido de la spec — nada inventado
 - [ ] Casos de prueba corridos mentalmente y reportados → **gate: N/N ✓**
+- [ ] `python3 tools/validar.py` en verde
 - [ ] Índices actualizados: README, BACKLOG, STATUS, BITACORA
 
 **Checklist fase 3 (validación legal):**

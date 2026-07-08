@@ -1,141 +1,120 @@
+# Plantilla de skill legal — v2 (formato Agent Skills)
+
+> **v2 — 2026-07-08.** Documenta el formato real de la librería: carpeta por
+> skill con `SKILL.md` + `references/`. La v1 (anatomía (a)–(e) en un solo
+> archivo) vive en el historial de git; su anatomía sobrevive aquí como
+> mapeo. El validador (`tools/validar.py`) hace cumplir esta plantilla en CI
+> en cada push.
+
+## Cómo nace una skill (no se llena esta plantilla directamente)
+
+Las skills NO se escriben desde cero sobre esta plantilla: se **construyen
+desde una spec aprobada**, siguiendo el pipeline del BACKLOG:
+
+1. **Fase 1 — investigación verificada:** se produce
+   `specs/<nombre>-spec.md` cumpliendo
+   [brief-investigacion-skill.md](brief-investigacion-skill.md), con citas
+   transcritas de documentos oficiales descargados en la sesión (documento +
+   página por cita). Gate: aprobación de JP.
+2. **Fase 2 — construcción:** se transcribe la spec a la estructura de abajo
+   — sin inventar nada que no esté en la spec — y se corren sus casos de
+   prueba. Gate: casos N/N ✓ + validador en verde.
+3. **Fase 3 — validación legal:** el abogado revisa la librería completa;
+   solo entonces una skill puede subir a `verificada`.
+
+Esta plantilla define el **formato destino** de la fase 2.
+
+## Estructura de carpeta
+
+```
+skills/<nombre-en-kebab-case>/
+  SKILL.md                 <- puerta de entrada: qué hace, procedimiento,
+                              severidad, formato de salida, límites, estado
+  references/
+    texto-legal.md         <- SOLO fuente verificada: citas textuales F-xx
+                              con documento oficial y página
+    reglas.md              <- lógica implementable: RD-xx + casos límite CL-xx
+  assets/                  <- solo si la skill tiene plantillas propias
+    plantilla-reporte.md      (si no, se reutiliza la de la librería y NO se
+                               crea la carpeta)
+```
+
+## SKILL.md
+
+Frontmatter obligatorio (el validador lo exige):
+
+```yaml
 ---
-id: "[tema-en-kebab-case]"
-titulo: "[Nombre humano de la skill]"
-estado: borrador   # borrador | en-verificacion | verificada | requiere-actualizacion
-ultima_revision: "[AAAA-MM-DD]"
-revisado_por: "[quién verificó contra fuente oficial, y en calidad de qué — p. ej. fundador / abogado laboral]"
+name: <idéntico al nombre de la carpeta>
+description: <qué hace + cuándo usarla, en una descripción rica en términos de búsqueda>
+metadata:
+  version: "X.Y.Z"          # semver; sube con cada revisión de contenido
+  owner: "<responsable>"
+  reviewed_at: "AAAA-MM-DD" # última verificación contra fuente oficial
+  ley: "<artículos que cubre>"
+  fuente: "<documento(s) oficial(es) y su versión/fecha>"
 ---
+```
 
-<!-- ═══════════════════════════════════════════════════════════════════════
-CÓMO USAR ESTA PLANTILLA — borra este bloque al crear una skill real
+Secciones del cuerpo, en este orden:
 
-1. Copia este archivo a: skills/<tema-en-kebab-case>.md
-   El nombre del archivo debe ser idéntico al campo `id` del frontmatter.
-2. Una skill = UN tema operativo (jornada, horas extra, aguinaldo...), no una
-   ley completa. Una skill puede citar varias leyes a la vez; el amarre con
-   cada ley vive en la sección (a).
-3. Llena las secciones en orden. La (a) siempre primero: si no hay fuente
-   verificable, no hay skill.
-4. Reemplaza todo lo que esté [entre corchetes]. Ningún corchete puede
-   sobrevivir en una skill con estado `verificada` — lo que no se sepa se
-   registra como pregunta abierta en (d), nunca se inventa.
-5. Los demás comentarios <!-- --> son guías de llenado: no se ven al renderizar
-   en GitHub y pueden quedarse en el archivo final.
+1. **Qué hace / Por qué importa / Cuándo se activa / Frontera** con las
+   skills vecinas (de la sección 1 de la spec).
+2. **Archivos de referencia** — links a `references/` y a la plantilla de
+   reporte que use.
+3. **Capa interpretativa** — lecturas operativas del texto y criterios CON
+   fuente; se declara vacía si no hay criterios verificados. Nunca de
+   memoria.
+4. **Procedimiento** de auditoría o cálculo — pasos numerados que citan
+   RD-xx y anotan CL-xx.
+5. **Árbol de decisión de severidad** — consistente con la columna Riesgo de
+   reglas.md y con los casos de prueba de la spec (checklist del brief).
+6. **Formato de salida** — plantilla de reporte + secciones fijas propias.
+7. **Límites de la skill** — qué NO hace, qué es de otras skills, y el
+   disclaimer de no-asesoría-legal.
+8. **Estado del contenido** — de dónde salieron las citas (documento, fecha,
+   páginas), spec de origen y su aprobación, y qué queda pendiente para el
+   abogado (fase 3).
 
-REGLAS NO NEGOCIABLES
-- En (a) NO se interpreta: solo citas textuales y datos verificables en el DOF.
-- Se cita siempre el TEXTO VIGENTE del artículo (el de la última reforma que
-  lo tocó), no el texto original de la ley.
-- En (c) NO se copia ley: solo lógica implementable, anclada a fuentes por ID.
-- Toda revisión se registra en (e), incluso si no cambió nada
-  ("revisado, sin cambios").
-- Cadena de trazabilidad: F-xx (fuente) → RD-xx (regla) → código y tests de
-  Klokk. Los IDs son estables y nunca se reciclan.
-═══════════════════════════════════════════════════════════════════════ -->
+## references/texto-legal.md
 
-# [Título de la skill]
+- Tabla de **documentos oficiales** usados (qué es, URL, uso), descargados en
+  la sesión de investigación.
+- Tabla de **artículos** con su última reforma anotada en la consolidada.
+- **Citas textuales** F-01, F-02… copiadas sin parafrasear, cada una con
+  documento y página: `**F-01 — Art. NN (D1, p. NN):**` + blockquote.
+- Cero interpretación. Cero corchetes: el único permitido es `[...]` para
+  marcar omisión deliberada dentro de una cita.
 
-> **Pregunta operativa que responde:** [en una línea: qué duda concreta de la
-> operación diaria resuelve esta skill — p. ej. "¿cuándo una hora trabajada
-> cuenta como X?"]
+## references/reglas.md
 
----
+- Tabla de **reglas derivadas** con columnas: `ID | Regla | Riesgo | Estado |
+  Fuente`.
+  - IDs `RD-xx` estables, nunca reciclados.
+  - Riesgo: `Crítico | Alto | Medio | —`.
+  - Estado: `FIRME` (el texto lo exige) · `FIRME*` (interpretación operativa
+    con pregunta abierta registrada) · `PENDIENTE` (fuente o regulación no
+    publicada/transcrita).
+  - Fuente: las F-xx que la respaldan (deben existir en texto-legal.md).
+- Tabla de **casos límite** `CL-xx`: caso, por qué es ambiguo, estado
+  (`abierta`/`resuelta`), quién resuelve. Lo que no se sabe se registra
+  aquí — jamás se resuelve inventando.
 
-## (a) Fuente legal exacta
+## Mapeo con la anatomía v1 (a)–(e)
 
-<!-- Solo hechos verificables. Cero interpretación, cero paráfrasis.
-     Cada fuente recibe un ID estable (F-01, F-02...). -->
+| Anatomía v1 | Dónde vive en v2 |
+|-------------|------------------|
+| (a) Fuente legal exacta | `references/texto-legal.md` |
+| (b) Interpretación operativa | SKILL.md: qué hace/por qué + capa interpretativa |
+| (c) Reglas derivadas | `references/reglas.md` (RD-xx) + procedimiento del SKILL.md |
+| (d) Casos límite y preguntas abiertas | `references/reglas.md` (CL-xx) |
+| (e) Estado y última revisión | frontmatter (`reviewed_at`, `version`) + "Estado del contenido" |
 
-| ID   | Instrumento              | Artículo / fracción   | Última reforma en DOF | Link oficial |
-|------|--------------------------|-----------------------|-----------------------|--------------|
-| F-01 | [Ley / NOM / Reglamento] | [Art. NN, fracción X] | [AAAA-MM-DD]          | [URL de dof.gob.mx u otra fuente oficial] |
-| F-02 | [...]                    | [...]                 | [AAAA-MM-DD]          | [...]        |
+## Reglas no negociables (resumen del kernel)
 
-### Texto citado
-
-<!-- Copia textual del artículo vigente, entre comillas, sin resumir ni
-     modernizar la redacción. Si el artículo es largo, cita únicamente los
-     párrafos relevantes e indícalo con [...]. -->
-
-**F-01 — [Art. NN, Instrumento]:**
-
-> "[Cita textual del artículo, copiada del texto vigente publicado en el DOF.]"
-
-**F-02 — [Art. NN, Instrumento]:**
-
-> "[Cita textual.]"
-
----
-
-## (b) Interpretación operativa
-
-<!-- Qué significa (a) en la práctica, en lenguaje claro. Sin jerga jurídica;
-     si un término legal es inevitable, defínelo aquí mismo. -->
-
-**Para una empresa (el empleador):**
-
-[Qué obligación o derecho concreto genera esto en el día a día de una PyME:
-qué debe hacer, cuándo, y qué le pasa si no lo hace.]
-
-**Para Klokk (el producto):**
-
-[Qué debe registrar, calcular, limitar o alertar Klokk para que sus clientes
-cumplan con esto.]
-
----
-
-## (c) Reglas derivadas
-
-<!-- La lógica que un desarrollador convierte en código SIN tomar decisiones
-     legales propias. Cada regla declara: cuándo aplica, la lógica exacta
-     (fórmula, umbrales, unidades, redondeos, husos horarios si aplican) y las
-     fuentes de (a) que la respaldan.
-     Si al escribir una regla aparece una ambigüedad: NO se resuelve aquí — se
-     registra como CL-xx en (d) y la regla queda marcada como parcial. -->
-
-### RD-01 — [nombre corto de la regla]
-
-- **Aplica cuando:** [condición de entrada, sin ambigüedad]
-- **Regla:** [lógica exacta: fórmula, umbral, unidad, redondeo]
-- **Fuente:** F-01
-- **Notas de implementación:** [opcional — precisión decimal, orden de
-  operaciones, zona horaria, referencias a CL-xx que la afectan]
-
-### RD-02 — [nombre corto de la regla]
-
-- **Aplica cuando:** [...]
-- **Regla:** [...]
-- **Fuente:** [F-01, F-02]
-
----
-
-## (d) Casos límite y preguntas abiertas
-
-<!-- Dónde la ley es ambigua, guarda silencio, o falta que la autoridad
-     publique disposiciones. Una pregunta abierta NO bloquea publicar la
-     skill, pero tiene que quedar registrada. IDs estables: CL-01, CL-02... -->
-
-| ID    | Caso o pregunta       | Por qué es ambiguo                | Estado  | Quién lo resuelve |
-|-------|-----------------------|-----------------------------------|---------|-------------------|
-| CL-01 | [situación concreta]  | [qué dice la ley y qué NO dice]   | abierta | [abogado / autoridad pendiente de publicar / decisión de producto] |
-| CL-02 | [...]                 | [...]                             | abierta | [...]             |
-
-<!-- Cuando un caso se resuelva: cambia su estado a "resuelta", documenta cómo
-     y cuándo (aquí mismo o en una nota bajo la tabla), y si la resolución
-     produce lógica nueva, créala como una RD-xx y registra el cambio en (e). -->
-
----
-
-## (e) Estado y última revisión
-
-<!-- El estado VIGENTE vive en el frontmatter — una sola fuente de verdad,
-     legible por máquina. Aquí vive el historial humano: quién revisó qué,
-     cuándo y contra qué fuente. Toda revisión se registra, sin excepción. -->
-
-**Regla de caducidad:** si `ultima_revision` tiene más de [N meses — umbral
-por definir], esta skill se trata como `requiere-actualizacion` aunque el
-frontmatter diga otra cosa.
-
-| Fecha        | Revisó   | Qué se verificó o cambió       | Fuente contrastada |
-|--------------|----------|--------------------------------|--------------------|
-| [AAAA-MM-DD] | [nombre] | Creación inicial de la skill   | [edición del DOF u otra fuente oficial] |
+- Cero contenido legal sin documento oficial descargado y citado con página.
+- Toda ambigüedad → CL-xx; nunca se resuelve inventando.
+- `verificada` solo existe después de la fase 3 (el CI lo bloquea).
+- Toda revisión (aunque no cambie nada) sube `reviewed_at` y se registra en
+  el "Estado del contenido" y la BITACORA.
+- Antes de cada push: `python3 tools/validar.py` en verde.

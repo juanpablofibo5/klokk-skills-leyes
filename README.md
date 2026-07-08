@@ -1,5 +1,7 @@
 # klokk-skills-leyes
 
+![validacion](https://github.com/juanpablofibo5/klokk-skills-leyes/actions/workflows/validacion.yml/badge.svg)
+
 Base de conocimiento legal versionada para **Klokk** — SaaS de control de
 asistencia vía WhatsApp para PyMEs en México.
 

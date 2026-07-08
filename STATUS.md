@@ -4,12 +4,12 @@
 
 ## Ahora mismo
 
-- **Batch aprobado:** JP revisó y aprobó en bloque las 5 specs del modo
-  batch (D-14). Las 9 skills de P1+P2 están construidas y con specs
-  aprobadas; todas `en-verificacion` esperando la fase 3.
-- **Sin loop abierto.** El plan vigente es la **Ruta a v1.0** (ver
-  BACKLOG.md): infraestructura de calidad → completar contenido (NOM-037,
-  decisión P3) → blindaje pre-abogado → fase 3 y tag v1.0.0.
+- **Etapa 1 de la Ruta a v1.0 COMPLETADA (2026-07-08):** CI de validación
+  activo en cada push (`tools/validar.py` + Action `validacion`, D-17) y
+  plantilla v2 publicada. Las 9 skills pasan el validador en verde.
+- **Sin loop abierto.** Siguiente al disparar: **Etapa 2** — loop NOM-037
+  (→ teletrabajo v2, cierra D-12) y los dos loops P3 (`trabajo-de-menores`,
+  `lactancia-y-descansos-especiales`, D-15).
 
 ## Estado por skill
 

@@ -15,6 +15,18 @@ Orden: más reciente arriba. Cada entrada: qué se hizo, qué quedó pendiente.
   hasta la fase 3 y el tag v1.0.0.
 - Decisiones de JP del día: P3 entra completo (D-15, catálogo final = 11
   skills) y el mecanismo de consumo queda diferido con dueño — Luis (D-16).
+- **Etapa 1 de la Ruta a v1.0 COMPLETADA** (aclaración previa de JP:
+  "barato" = esfuerzo, no calidad — se construyó al estándar completo):
+  - `tools/validar.py` + GitHub Action `validacion` en cada push (D-17).
+    Primera corrida: 2 falsos positivos del propio validador (transitorios
+    citados sin fila de tabla) → check calibrado → 9 skills en verde.
+    Prueba negativa: estado `verificada` y link roto inyectados → detectados
+    → restaurado. El validador truena cuando debe.
+  - Plantilla v2: `plantillas/plantilla-skill-legal.md` reescrita al formato
+    real (Agent Skills), con mapeo (a)–(e) → v2 y pipeline de origen.
+    Cierra la deuda de S2.
+  - CLAUDE.md: el protocolo de loop ahora incluye el paso VALIDAR; README
+    con badge del CI.
 
 ## 2026-07-07 · S4 — Adopción del proceso + fase 1 de horas-extra
 
