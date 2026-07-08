@@ -18,6 +18,15 @@ Orden: más reciente arriba. Cada entrada: qué se hizo, qué quedó pendiente.
   prueba 6/6 ✓, checklist de fase 2 completo (estructura, solo-spec, casos
   reportados, índices README/BACKLOG/STATUS/BITACORA actualizados).
   3 skills construidas; siguiente: `dias-de-descanso`.
+- Loop fase 1 de `dias-de-descanso` CERRADO: spec producida
+  (`specs/dias-de-descanso-spec.md`) con F-01–F-05 (Arts. 69–73 de D1
+  p. 23; Arts. 74–75 excluidos → van en `dias-festivos`), RD-01–RD-06,
+  CL-01–CL-04 (dos que definen la lógica del checador: cómputo de rachas
+  por ventana móvil vs semana calendario, y naturaleza del segundo día
+  libre en semanas de 5 días por la transición a 40h), 6 casos de prueba
+  y checklist del brief verificado (9/9 — el requisito de calendarios
+  graduales no aplica: el capítulo no tiene transitorios propios).
+  Gate abierto: visto bueno de JP.
 
 ## 2026-07-07 · S3 — Sistema de producción + jornada-laboral completa
 

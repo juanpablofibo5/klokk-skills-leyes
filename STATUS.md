@@ -4,10 +4,10 @@
 
 ## Ahora mismo
 
-- **Último loop cerrado:** fase 2 de `horas-extra` — skill construida, casos
-  de prueba 6/6 ✓ (2026-07-07).
-- **Sin loop abierto.** Próximo: fase 1 de `dias-de-descanso` (fuentes ya
-  localizadas: LFT consolidada p. 23, Arts. 69–73).
+- **Último loop cerrado:** fase 1 de `dias-de-descanso` — spec producida y
+  checklist del brief verificado (2026-07-07).
+- **Gate abierto:** visto bueno de JP a `specs/dias-de-descanso-spec.md`
+  para pasar a fase 2.
 
 ## Estado por skill
 
@@ -16,6 +16,7 @@
 | `registro-jornada` | ✅ 2 completada | Fase 3 (abogado, librería completa) |
 | `jornada-laboral` | ✅ 2 completada | Fase 3 (abogado, librería completa) |
 | `horas-extra` | ✅ 2 completada | Fase 3 (abogado, librería completa) |
+| `dias-de-descanso` | 🔍 1 cerrada — spec en visto bueno | Visto bueno de JP a la spec |
 | Resto del catálogo | pendiente | Ver [BACKLOG.md](BACKLOG.md) |
 
 ## Fuentes oficiales ya localizadas (descargadas 2026-07-07)
