@@ -39,7 +39,12 @@ Orden: más reciente arriba. Cada entrada: qué se hizo, qué quedó pendiente.
 - Loops de `dias-festivos` CERRADOS (batch): spec + skill construida, casos
   6/6 ✓. CL nuevos de dinero: concursos de pago doble festivo-domingo
   (CL-01) y festivo-descanso semanal (CL-02); fuentes externas para las
-  fracc. VII y IX (CL-03/04).
+  fracc. VII y IX (CL-03/04). **P1 completo: 5/5.**
+- Loops de `vacaciones` CERRADOS (batch): spec + skill construida, casos
+  6/6 ✓. La tabla por antigüedad se marcó FIRME* — años 1–5 literales del
+  Art. 76, bloques quinquenales como lectura estándar con CL-01 (cortes de
+  bloque) para el abogado. CL-04: tensión potestad del trabajador (78) vs
+  ventana de 6 meses (81).
 
 ## 2026-07-07 · S3 — Sistema de producción + jornada-laboral completa
 
