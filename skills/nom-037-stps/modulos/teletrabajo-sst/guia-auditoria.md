@@ -119,7 +119,7 @@ Sin criterios citados de memoria. Lecturas operativas del texto:
   RD-09 del módulo registro-jornada (lft)) y define "actualizado" como
   reflejar altas y bajas de la modalidad. La ventana de medición del %
   sigue sin definirse (CL-01 del módulo teletrabajo (lft)) y el umbral de
-  aplicación de la NOM tampoco (CL-03 del módulo teletrabajo (lft)).
+  aplicación de la NOM tampoco (CL-05 del módulo teletrabajo (lft)).
 - **La desconexión es más ancha que en la LFT (F-02, F-05 e, F-09 e):** la
   LFT la enuncia "al término de la jornada laboral" (RD-03 del módulo
   teletrabajo (lft)); la NOM la define además "en los horarios no
@@ -173,7 +173,7 @@ Dónde buscar cada regla de este módulo en un repo típico:
 1. **Verificar aplicabilidad (F1):** buscar señales positivas de teletrabajo
    en el repo. Si no hay ninguna, declarar N/A con razón y terminar. Anotar
    CL-01 del módulo teletrabajo (lft) con la ventana de medición del 40 %
-   usada; anotar CL-03 de ese módulo si hay remotos bajo el umbral.
+   usada; anotar CL-05 de ese módulo si hay remotos bajo el umbral.
 
 2. **Auditar el listado NOM (RD-01):** ¿existe un listado actualizado con al
    menos los incisos a) a k) del 5.1? ¿Está en formato digital accesible?
@@ -224,7 +224,7 @@ Si hay teletrabajadores bajo el umbral del 40 % a quienes se aplica la NOM,
 agregar:
 
 ```
-NOTA CL-03 (teletrabajo-lft): se aplicó la NOM a trabajadores con [X %] de
+NOTA CL-05 (teletrabajo-lft): se aplicó la NOM a trabajadores con [X %] de
 tiempo en teletrabajo — umbral de aplicación abierto, pendiente del abogado.
 ```
 
@@ -240,7 +240,7 @@ tiempo en teletrabajo — umbral de aplicación abierto, pendiente del abogado.
   ergonómicas del lugar de trabajo (numerales 7.1, 7.2 y 7.3 incisos a–c),
   listas de verificación de SST y su validación por la Comisión de Seguridad
   e Higiene (5.3, 5.4, 5.5, 5.5.1, 5.12), entrega de silla/insumos
-  ergonómicos (5.7, salvo su registro vía RD-05 del módulo teletrabajo
+  ergonómicos (5.7, salvo su registro vía RD-06 del módulo teletrabajo
   (lft)), mantenimiento de equipos (5.8), capacitación anual (5.9 y numeral
   8), exámenes médicos y avisos de accidente (5.11), violencia familiar
   (5.13, salvo su efecto de reversibilidad vía RD-04 de este módulo),

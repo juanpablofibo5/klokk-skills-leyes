@@ -81,8 +81,9 @@ tools/validar.py              ← el CI: estructura, fidelidad de formato, guard
    oficial en la sesión, se transcribe con documento + página y se ancla por
    hash en FUENTES.md. Nada se escribe de memoria; lo ambiguo se registra
    como caso límite (CL-xx), jamás se resuelve inventando.
-2. **Spec y gate:** cada módulo nace de una spec en `specs/` aprobada por el
-   dueño de la librería.
+2. **Spec y gate:** cada módulo nace de una spec aprobada por el dueño de
+   la librería (en `specs/`, salvo spec externa documentada — p. ej.
+   registro-jornada).
 3. **Fase 3 (pendiente):** un abogado laboralista revisará la librería
    completa — los CL-xx priorizados son su paquete de entrada; solo entonces
    los estados suben a `verificada` y se etiqueta v1.0.0.

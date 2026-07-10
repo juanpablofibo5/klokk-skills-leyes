@@ -8,11 +8,16 @@
   `skills/lft/` (9 módulos) + `skills/nom-037-stps/` (1 módulo), flujo
   F0–F5, plantilla de reporte v2, validador v2 y README nuevos. Fidelidad
   legal verificada mecánicamente (0 fallas); validador 0 errores.
-- **En curso:** review final holístico + smoke test (fixture con 2
-  violaciones sembradas) por instancia independiente → push + CI.
+- **Review final + smoke test: PASADOS (2026-07-09).** Una instancia
+  independiente ejecutó F0–F3 de `lft/` sobre un fixture sintético usando
+  solo la documentación: las 2 violaciones sembradas detectadas con módulo,
+  regla, severidad y archivo:línea correctos (+38 hallazgos legítimos). Sus
+  7 problemas de librería quedaron corregidos (refs calificadas del NOM,
+  RD-07 por precedente D-05 → D-21, resolver de referencias cruzadas en el
+  validador, doc del flujo).
 - **Gates abiertos de JP:** (1) revisión en bloque del batch R2/R3 + spec
-  NOM (D-20); (2) R4 — dogfooding: correr `lft/` en una sesión dentro del
-  repo real del producto.
+  NOM (D-20) + D-21; (2) R4 — dogfooding: correr `lft/` en una sesión dentro
+  del repo real del producto.
 
 ## Estado por ley
 

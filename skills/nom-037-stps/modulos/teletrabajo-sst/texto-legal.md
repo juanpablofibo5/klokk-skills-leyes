@@ -52,7 +52,7 @@ de FUENTES.md detecta cualquier cambio futuro).
 
 Nota de lectura: esta definición y el campo de aplicación (F-01) NO repiten
 el umbral de "más del cuarenta por ciento" del Art. 330-A de la LFT (RD-01
-del módulo teletrabajo (lft)) → CL-03.
+del módulo teletrabajo (lft)) → CL-05 del módulo teletrabajo (lft).
 
 **F-04 — Numeral 5.1, listado de teletrabajadores, completo (D3, p. 7):**
 

@@ -31,8 +31,28 @@ Orden: más reciente arriba. Cada entrada: qué se hizo, qué quedó pendiente.
   del decreto restauradas donde ya estaban verificadas), CLAUDE.md formato
   v3, validador **0 errores / 7 avisos** (huérfanas contextuales + páginas
   M-08 documentadas).
-- Pendiente inmediato: review final holístico + smoke test con fixture
-  (2 violaciones sembradas) por instancia Fable fresca; luego push + CI.
+- **Review final holístico + SMOKE TEST (instancia Fable fresca):** el
+  flujo F0–F3 de `lft/` corrió de punta a punta contra un checador sintético
+  usando SOLO la documentación de la librería. Las 2 violaciones sembradas
+  cayeron exactas (H-01 conservacion RD-02 CRÍTICO purga@90d; H-02
+  horas-extra RD-04 CRÍTICO pago ×1.5) + 38 hallazgos legítimos más, N/A
+  declarados con señales, CUMPLE probado (la tabla de vacaciones del fixture
+  reproduce exactamente la del módulo). Veredicto de librería:
+  REQUIERE-CAMBIOS con 7 problemas → TODOS corregidos: 5 refs CL-03→CL-05 y
+  2 refs RD-05→RD-06 en el módulo NOM; RD-07 de registro-jornada alineado a
+  la tabla (Crítico) por precedente D-05 → **D-21** (la inconsistencia venía
+  del original aprobado); validador ahora RESUELVE referencias calificadas
+  entre módulos/skills (y de paso destapó que la tabla 4-columnas legacy de
+  registro-jornada no entraba al registro — corregido); secciones homónimas
+  del flujo fusionadas; plantilla y README matizados. Fricciones del smoke
+  incorporadas: nota APLICA-vs-N/A en lft/SKILL.md, ejemplo resuelto de
+  atenuación de PARCIAL y regla de prohibición-sin-superficie
+  (NO-VERIFICABLE) en el flujo.
+- **Cierre: validador 0 errores / 7 avisos** (citas F de contexto huérfanas
+  — informativas — y sin marcadores de página pendientes: los transitorios
+  de registro-jornada recuperaron sus páginas verificadas D2 pp. 3–4).
+  R2+R3 TERMINADOS. Gates abiertos: revisión en bloque de JP (D-20/D-21) y
+  R4 (dogfooding en el repo real del producto).
 
 ## 2026-07-08 · S5 (cont.) — PIVOTE: librería agnóstica (D-18/D-19), R0+R1
 

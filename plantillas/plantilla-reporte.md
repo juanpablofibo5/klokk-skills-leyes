@@ -71,5 +71,5 @@ preguntas abiertas. Trazabilidad completa: F-xx → RD-xx → evidencia.
 ella; todo hallazgo cita su RD y su evidencia o no es hallazgo; las secciones
 fijas por módulo (p. ej. "LÍMITES APLICADOS ESTE AÑO", "CLASIFICACIÓN
 APLICADA") se insertan al final de la sección 3; la severidad sale del árbol
-del módulo bajo la regla global F2→severidad (lft/SKILL.md); F5 solo procede
+del módulo bajo la regla global F2→severidad (SKILL.md de la ley corrida); F5 solo procede
 con aprobación explícita del dueño del repo.

@@ -37,11 +37,12 @@ Ver también la regla global F2→severidad en skills/lft/SKILL.md.
 ```
 Para cada hallazgo sobre el código auditado:
 
-  ¿El hallazgo impide tener CUALQUIER registro válido? (RD-01, RD-03)
+  ¿El hallazgo impide tener CUALQUIER registro válido o rompe la
+  identidad de los datos con nómina/IMSS/CFDI? (RD-01, RD-03, RD-07)
      SÍ  -> CRÍTICO  (expone a multa directa por trabajador; F-01 / F-02)
      NO  -> siguiente pregunta
 
-  ¿El hallazgo DEBILITA el valor probatorio del registro? (RD-02, RD-04, RD-05, RD-07, RD-08, RD-09)
+  ¿El hallazgo DEBILITA el valor probatorio del registro? (RD-02, RD-04, RD-05, RD-08, RD-09)
      SÍ  -> ALTO  (pierde defensa en juicio aunque exista registro)
      NO  -> siguiente pregunta
 

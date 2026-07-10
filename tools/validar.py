@@ -55,6 +55,9 @@ CALIFICADORES = ("de la skill", "del módulo", "de la misma skill", "de ídem")
 
 errores: list[str] = []
 avisos: list[str] = []
+# {ley: {módulo: {"F": set, "RD": set, "CL": set}}} — para resolver
+# referencias calificadas entre módulos y skills.
+REGISTRO: dict[str, dict[str, dict[str, set]]] = {}
 
 
 def err(m): errores.append(m)
@@ -107,7 +110,7 @@ def validar_texto_legal(path: Path) -> set[str]:
         if m.group(1) != "..." and not (path.parent / m.group(1)).exists():
             err(f"{rel(path)}: corchetes sin resolver: `[{m.group(1)[:40]}]`")
     citas = re.findall(r"^\*\*F-(\d{2})", texto, re.M)
-    tabla = re.findall(r"^\| F-(\d{2}) \|", texto, re.M)
+    tabla = re.findall(r"^\|\s*F-(\d{2})\s*\|", texto, re.M)
     dup = {x for x in citas if citas.count(x) > 1}
     if dup:
         err(f"{rel(path)}: IDs F duplicados en citas: {sorted(dup)}")
@@ -121,17 +124,21 @@ def ref_calificada(texto: str, fin: int) -> bool:
     return any(c in texto[fin:fin + 40] for c in CALIFICADORES)
 
 
+EQUIVALENCIA = re.compile(r"^\|\s*(?:F|RD|CL)-\d{2}\s*\|\s*(?:F|RD|CL)-\d{2}\s*\|")
+
+
 def es_fila_regla(linea: str) -> bool:
-    # Las tablas de reglas/CL tienen 5 columnas (>= 6 pipes); las tablas de
-    # equivalencia (mapeos con la spec, 2-4 columnas) no se validan como reglas.
-    return linea.count("|") >= 6
+    # Fila de regla/CL: tabla de >= 4 columnas cuya segunda celda es prosa.
+    # Las tablas de equivalencia (segunda celda = solo otro ID) se excluyen;
+    # el formato de registro-jornada (4 columnas, sin Fuente) se acepta.
+    return linea.count("|") >= 5 and not EQUIVALENCIA.match(linea)
 
 
 def validar_reglas(path: Path, fuentes: set[str], guia_texto: str) -> None:
     texto = leer(path)
     lineas = texto.splitlines()
     filas = [m.group(1) for l in lineas if es_fila_regla(l)
-             for m in [re.match(r"^\| (RD-\d{2}) \|", l)] if m]
+             for m in [re.match(r"^\|\s*(RD-\d{2})\s*\|", l)] if m]
     dup = {x for x in filas if filas.count(x) > 1}
     if dup:
         err(f"{rel(path)}: IDs de regla duplicados: {sorted(dup)}")
@@ -139,12 +146,12 @@ def validar_reglas(path: Path, fuentes: set[str], guia_texto: str) -> None:
     for linea in lineas:
         if not es_fila_regla(linea):
             continue
-        if re.match(r"^\| RD-\d{2} \|", linea):
+        if re.match(r"^\|\s*RD-\d{2}\s*\|", linea):
             if not any(e in linea for e in ESTADOS_REGLA):
                 err(f"{rel(path)}: fila de regla sin estado válido: `{linea[:70]}…`")
             if not any(r in linea for r in RIESGOS):
                 err(f"{rel(path)}: fila de regla sin riesgo válido: `{linea[:70]}…`")
-        m = re.match(r"^\| (CL-\d{2}) \|", linea)
+        m = re.match(r"^\|\s*(CL-\d{2})\s*\|", linea)
         if m:
             cls.add(m.group(1))
             if not ("abierta" in linea or "resuelta" in linea):
@@ -163,6 +170,9 @@ def validar_reglas(path: Path, fuentes: set[str], guia_texto: str) -> None:
     citadas = set(re.findall(r"F-\d{2}", texto)) | set(re.findall(r"F-\d{2}", guia_texto))
     for f in sorted(fuentes - citadas):
         warn(f"{rel(path.parent / 'texto-legal.md')}: cita {f} huérfana (ninguna regla/guía la usa)")
+    return ({f"RD-{x}" for x in re.findall(r"^\|\s*RD-(\d{2})\s*\|", texto, re.M)
+             if any(es_fila_regla(l) and re.match(rf"^\|\s*RD-{x}\s*\|", l) for l in lineas)},
+            cls)
 
 
 def validar_guia(path: Path) -> None:
@@ -207,14 +217,56 @@ def validar_ley(carpeta: Path) -> list[str]:
                 err(f"{rel(mod)}: falta {f.name}")
         fuentes = validar_texto_legal(tl) if tl.exists() else set()
         guia_texto = leer(ga) if ga.exists() else ""
+        rds, cls = (set(), set())
         if rg.exists():
-            validar_reglas(rg, fuentes, guia_texto)
+            rds, cls = validar_reglas(rg, fuentes, guia_texto)
+        REGISTRO.setdefault(nombre, {})[mod.name] = {"F": fuentes, "RD": rds, "CL": cls}
         if ga.exists():
             validar_guia(ga)
             validar_links(ga)
         if mod.name not in skill_texto:
             err(f"skills/{nombre}/SKILL.md: el módulo `{mod.name}` no está indexado")
     return modulos
+
+
+PATRON_DESTINO = re.compile(
+    r"de(?:l\s+módulo|\s+la\s+skill)\s+([a-z0-9][a-z0-9-]*)(?:\s*\(([a-z0-9-]+)\))?")
+
+
+def conjuntos_destino(nombre: str, ley_suf: str | None):
+    if ley_suf and nombre in REGISTRO.get(ley_suf, {}):
+        return REGISTRO[ley_suf][nombre]
+    for mods in REGISTRO.values():
+        if nombre in mods:
+            return mods[nombre]
+    if nombre in REGISTRO:  # skill-ley completa: unión de sus módulos
+        u = {"F": set(), "RD": set(), "CL": set()}
+        for s in REGISTRO[nombre].values():
+            for k in u:
+                u[k] |= s[k]
+        return u
+    return None
+
+
+def validar_refs_calificadas() -> None:
+    """Resuelve refs tipo 'RD-09 del módulo registro-jornada (lft)' o
+    'F-02 de la skill nom-037-stps' en todo skills/. Las contextuales
+    ('de ese módulo', 'de la misma skill') no se resuelven estáticamente."""
+    for p in sorted((RAIZ / "skills").rglob("*.md")):
+        texto = leer(p)
+        for m in re.finditer(r"\b(F|RD|CL)-(\d{2})\b", texto):
+            cola = re.sub(r"\s+", " ", texto[m.end():m.end() + 80])
+            d = PATRON_DESTINO.search(cola[:60])
+            if not d or d.start() > 20:
+                continue
+            tid = f"{m.group(1)}-{m.group(2)}"
+            destino = conjuntos_destino(d.group(1), d.group(2))
+            if destino is None:
+                err(f"{rel(p)}: referencia `{tid} … {d.group(0).strip()}` a un "
+                    f"destino inexistente")
+            elif tid not in destino[m.group(1)]:
+                err(f"{rel(p)}: `{tid} {d.group(0).strip()}` — ese ID no existe "
+                    f"en el destino")
 
 
 def validar_globales(leyes: dict[str, list[str]]) -> None:
@@ -260,6 +312,7 @@ def main() -> int:
     leyes: dict[str, list[str]] = {}
     for carpeta in sorted(p for p in (RAIZ / "skills").iterdir() if p.is_dir()):
         leyes[carpeta.name] = validar_ley(carpeta)
+    validar_refs_calificadas()
     validar_globales(leyes)
 
     total_mod = sum(len(m) for m in leyes.values())

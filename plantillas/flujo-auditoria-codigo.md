@@ -61,6 +61,18 @@ cumple o se rompe, y clasificar:
 | VIOLADA | El código hace activamente lo contrario |
 | NO-VERIFICABLE | El código disponible no permite decidir (decirlo) |
 
+Dos precisiones de clasificación:
+- **Atenuación de PARCIAL (ejemplo resuelto):** si la regla exige "exportar
+  registros por trabajador y periodo" y el código exporta TODO en un CSV sin
+  selector, lo faltante (el selector) no es el núcleo (el dato completo y
+  exportable) → PARCIAL atenuado un nivel, explicándolo. Si lo faltante ES el
+  núcleo (p. ej. la tabla anual de límites en un validador de jornada),
+  PARCIAL sin atenuar.
+- **Reglas-prohibición sin superficie:** si la regla prohíbe algo y el código
+  no tiene NINGUNA superficie relacionada (ni para violarla ni para
+  cumplirla), se clasifica NO-VERIFICABLE — no como cumplimiento por
+  ausencia.
+
 **Salida:** matriz RD-xx → estado + evidencia `archivo:línea` + nota.
 
 ### F3 — Reporte de auditoría
@@ -121,8 +133,6 @@ límite** (CL-xx → sección INFORMATIVO) y sus **señales de aplicabilidad**
 (qué buscar en F1 para decidir si el módulo aplica). El flujo es el mismo
 para todas las leyes; los módulos son el conocimiento.
 
-## Formato de reporte
-
-La instanciación de este flujo usa
-[plantilla-reporte.md](plantilla-reporte.md) (v2, R2/M-03 concluidos). Cada
-módulo agrega sus secciones fijas donde su `guia-auditoria.md` lo indique.
+*(El formato de arriba está instanciado como plantilla llenable en
+[plantilla-reporte.md](plantilla-reporte.md); cada módulo agrega sus
+secciones fijas donde su `guia-auditoria.md` lo indique.)*

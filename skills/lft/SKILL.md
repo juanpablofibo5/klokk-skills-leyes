@@ -43,6 +43,12 @@ con documento y página), `reglas.md` (reglas RD-xx con riesgo y estado +
 casos límite CL-xx + árbol de severidad) y `guia-auditoria.md` (aplicabilidad
 F1, superficies F2, guía de auditoría y procedencia).
 
+**Nota de aplicabilidad:** la columna "aplica típicamente cuando…" es
+orientativa; deciden las señales F1 de cada guía. En particular, un sistema
+que registre asistencia APLICA a `dias-de-descanso` y `asistencia-y-faltas`
+aunque no tenga ninguna lógica de descansos o faltas — la ausencia de esa
+lógica es justamente el hallazgo (reglas en estado AUSENTE), no un N/A.
+
 ## Ejecución del flujo para esta ley
 
 1. **F0 — Descubrimiento:** mapear el repo target (stack, modelos de datos,
